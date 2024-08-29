@@ -42,6 +42,6 @@ For each motion photo, the script creates:
 
 Developed based on insights from this [Stack Exchange discussion](https://android.stackexchange.com/questions/196831/how-do-i-view-google-cameras-motion-photos-on-my-windows-pc).
 
-        ## Contributing
+## Contributing
 
 Contributions, issues, and feature requests are welcome. Check the [issues page](../../issues) to contribute.
