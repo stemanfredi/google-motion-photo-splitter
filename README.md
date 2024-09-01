@@ -1,47 +1,47 @@
-# Google Motion Photo Splitter
+    # Google Motion Photo Splitter
 
-A Python script to extract still images and videos from Google Motion Photos.
+    A Python script to extract still images and videos from Google Motion Photos.
 
-## Description
+    ## Description
 
-This tool processes Google Motion Photos, splitting them into separate JPEG (still image) and MP4 (video) files. It works with motion photos taken on Google Pixel phones and other devices using the Google Camera app.
+    This tool processes Google Motion Photos, splitting them into separate JPEG (still image) and MP4 (video) files. It works with motion photos taken on Google Pixel phones and other devices using the Google Camera app.
 
-## Requirements
+    ## Requirements
 
-- Python 3.6 or higher
+    - Python 3.6 or higher
 
-## Usage
+    ## Usage
 
-Run the script from the command line:
+    Run the script from the command line:
 
-```sh
-python splitter.py <file_path_or_pattern>
-```
+    ```sh
+    python splitter.py <file_path_or_pattern>
+    ```
 
-Examples:
+    Examples:
 
-```sh
-python splitter.py path/to/your/file.jpg
-python splitter.py "path/to/your/*.jpg"
-```
+    ```sh
+    python splitter.py path/to/your/file.jpg
+    python splitter.py "path/to/your/*.jpg"
+    ```
 
-## Output
+    ## Output
 
-For each motion photo, the script creates:
+    For each motion photo, the script creates:
 
-- `<original_filename>_photo.jpg`: The still image
-- `<original_filename>_video.mp4`: The motion video
+    - `<original_filename>_photo.jpg`: The still image
+    - `<original_filename>_video.mp4`: The motion video
 
-## Features
+    ## Features
 
-- Non-destructive: Original files are not modified
-- Batch processing: Can handle multiple files using wildcards
-- Cross-platform: Works on Windows, macOS, and Linux
+    - Non-destructive: Original files are not modified
+    - Batch processing: Can handle multiple files using wildcards
+    - Cross-platform: Works on Windows, macOS, and Linux
 
-## Acknowledgements
+    ## Acknowledgements
 
-Developed based on insights from this [Stack Exchange discussion](https://android.stackexchange.com/questions/196831/how-do-i-view-google-cameras-motion-photos-on-my-windows-pc).
+    Developed based on insights from this [Stack Exchange discussion](https://android.stackexchange.com/questions/196831/how-do-i-view-google-cameras-motion-photos-on-my-windows-pc).
 
-## Contributing
+    ## Contributing
 
-Contributions, issues, and feature requests are welcome. Check the [issues page](../../issues) to contribute.
+    Contributions, issues, and feature requests are welcome. Check the [issues page](../../issues) to contribute.

@@ -4,10 +4,10 @@ import sys
 
 
 def process_motion_photo(file_path):
-    print(f"\tProcessing: {file_path}")
+    print(f"Processing: {file_path}")
 
     file_size = os.path.getsize(file_path)
-    print(f"\t\tFile size: {file_size}")
+    print(f"\tFile size: {file_size}")
 
     with open(file_path, "rb") as f:
         data = f.read()
@@ -24,27 +24,38 @@ def process_motion_photo(file_path):
 
             output_base = os.path.splitext(file_path)[0]
 
-            print("\t\tSaving photo...")
+            print("\tSaving photo...")
             with open(f"{output_base}_photo.jpg", "wb") as f:
                 f.write(data[:jpg_end_pos])
 
-            print("\t\tSaving video...")
+            print("\tSaving video...")
             with open(f"{output_base}_video.mp4", "wb") as f:
                 f.write(data[mp4_start_pos:])
         else:
             print(
-                "\t\tSKIPPING - File appears to contain an MP4 but no valid JPG EOI segment could be found."
+                "\tSKIPPING - File appears to contain an MP4 but no valid JPG EOI segment could be found."
             )
     else:
-        print("\t\tSKIPPING - File does not appear to be a Google motion photo.")
+        print("\tSKIPPING - File does not appear to be a Google motion photo.")
 
 
-def main(src_arg):
-    src_dir = os.path.dirname(os.path.abspath(src_arg))
-
+def main(args):
     print("Scanning for files...")
 
-    for file in glob.glob(src_arg):
+    files_to_process = []
+    for arg in args:
+        if "*" in arg or "?" in arg:
+            # If the argument contains wildcards, use glob
+            files_to_process.extend(glob.glob(arg))
+        else:
+            # Otherwise, add the file directly
+            files_to_process.append(arg)
+
+    if not files_to_process:
+        print(f"No files found matching the given patterns.")
+        return
+
+    for file in files_to_process:
         if os.path.isfile(file) and file.lower().endswith((".jpeg", ".jpg")):
             process_motion_photo(file)
 
@@ -53,7 +64,9 @@ def main(src_arg):
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        print("Usage: python splitter.py <file_path_or_pattern>")
+        print(
+            "Usage: python splitter.py <file_path_or_pattern> [<file_path_or_pattern> ...]"
+        )
         sys.exit(1)
 
-    main(sys.argv[1])
+    main(sys.argv[1:])
